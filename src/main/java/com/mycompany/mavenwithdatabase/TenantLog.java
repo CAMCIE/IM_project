@@ -1,5 +1,11 @@
 package com.mycompany.mavenwithdatabase;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,12 +16,16 @@ package com.mycompany.mavenwithdatabase;
  * @author Lenovo
  */
 public class TenantLog extends javax.swing.JFrame {
-
+       
+    Connection conn;
+    PreparedStatement pst;
+    ResultSet rs;
     /**
      * Creates new form TenantLog
      */
     public TenantLog() {
         initComponents();
+        conn = Mavenwithdatabase.conn();
     }
 
     /**
@@ -30,10 +40,10 @@ public class TenantLog extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TenantName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        TenantLogin_bttn = new javax.swing.JButton();
+        ContactNo = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -62,15 +72,15 @@ public class TenantLog extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(71, 60, 51));
         jLabel2.setText("TENANT ID:");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(71, 60, 51));
-        jTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
-        jTextField1.setName("TENANT ID"); // NOI18N
-        jTextField1.setSelectedTextColor(new java.awt.Color(71, 60, 51));
-        jTextField1.setSelectionColor(new java.awt.Color(171, 194, 112));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        TenantName.setBackground(new java.awt.Color(255, 255, 255));
+        TenantName.setForeground(new java.awt.Color(71, 60, 51));
+        TenantName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
+        TenantName.setName("TENANT ID"); // NOI18N
+        TenantName.setSelectedTextColor(new java.awt.Color(71, 60, 51));
+        TenantName.setSelectionColor(new java.awt.Color(171, 194, 112));
+        TenantName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TenantNameActionPerformed(evt);
             }
         });
 
@@ -78,27 +88,27 @@ public class TenantLog extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(71, 60, 51));
         jLabel3.setText("PASSWORD:");
 
-        jButton2.setBackground(new java.awt.Color(254, 200, 104));
-        jButton2.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(71, 60, 51));
-        jButton2.setText("LOG IN");
-        jButton2.setBorder(null);
-        jButton2.setPreferredSize(new java.awt.Dimension(150, 50));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        TenantLogin_bttn.setBackground(new java.awt.Color(254, 200, 104));
+        TenantLogin_bttn.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
+        TenantLogin_bttn.setForeground(new java.awt.Color(71, 60, 51));
+        TenantLogin_bttn.setText("LOG IN");
+        TenantLogin_bttn.setBorder(null);
+        TenantLogin_bttn.setPreferredSize(new java.awt.Dimension(150, 50));
+        TenantLogin_bttn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                TenantLogin_bttnActionPerformed(evt);
             }
         });
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setForeground(new java.awt.Color(71, 60, 51));
-        jTextField3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
-        jTextField3.setName("PASS"); // NOI18N
-        jTextField3.setSelectedTextColor(new java.awt.Color(71, 60, 51));
-        jTextField3.setSelectionColor(new java.awt.Color(171, 194, 112));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        ContactNo.setBackground(new java.awt.Color(255, 255, 255));
+        ContactNo.setForeground(new java.awt.Color(71, 60, 51));
+        ContactNo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
+        ContactNo.setName("PASS"); // NOI18N
+        ContactNo.setSelectedTextColor(new java.awt.Color(71, 60, 51));
+        ContactNo.setSelectionColor(new java.awt.Color(171, 194, 112));
+        ContactNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                ContactNoActionPerformed(evt);
             }
         });
 
@@ -124,24 +134,22 @@ public class TenantLog extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel1)
-                        .addGap(0, 44, Short.MAX_VALUE))
+                        .addComponent(TenantName))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(7, 7, 7)
-                        .addComponent(jTextField3))
+                        .addComponent(ContactNo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(50, 50, 50)
+                                .addComponent(jLabel1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(44, 44, 44)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TenantLogin_bttn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 44, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -152,21 +160,21 @@ public class TenantLog extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TenantName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TenantLogin_bttn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        jTextField1.getAccessibleContext().setAccessibleName("TENANT ID");
-        jTextField1.getAccessibleContext().setAccessibleDescription("");
-        jTextField3.getAccessibleContext().setAccessibleName("PASS");
+        TenantName.getAccessibleContext().setAccessibleName("TENANT ID");
+        TenantName.getAccessibleContext().setAccessibleDescription("");
+        ContactNo.getAccessibleContext().setAccessibleName("PASS");
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.WEST);
 
@@ -341,17 +349,35 @@ public class TenantLog extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void TenantNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TenantNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_TenantNameActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void TenantLogin_bttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TenantLogin_bttnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        String Name = TenantName.getText();
+        String contact = ContactNo.getText();
+        try{
+            String query = "SELECT * FROM admin WHERE Tenant_Name=? AND Tenant_ContactNo=?";
+            pst = conn.prepareStatement(query);
+            pst.setString(1, Name);
+            pst.setString(2, contact);
+            rs = pst.executeQuery();
+            
+            if(rs.next()){
+            JOptionPane.showMessageDialog(null, "Login Successfull");
+            }else{
+                JOptionPane.showMessageDialog(null, "USERNAME OR PASSWORD IS INCORRECT");
+            }
+            
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(rootPane, Name);
+        }
+    }//GEN-LAST:event_TenantLogin_bttnActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void ContactNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_ContactNoActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
@@ -413,8 +439,10 @@ public class TenantLog extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ContactNo;
+    private javax.swing.JButton TenantLogin_bttn;
+    private javax.swing.JTextField TenantName;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -426,8 +454,6 @@ public class TenantLog extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;

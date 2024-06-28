@@ -17,7 +17,7 @@ public class Mavenwithdatabase {
     
     public static Connection conn(){
     try{
-        String url = "jdbc:mysql://localhost:3306/comfeedormies";
+        String url = "jdbc:mysql://localhost:3306/dormitory";
         String user = "root";
         String password = "";
         
