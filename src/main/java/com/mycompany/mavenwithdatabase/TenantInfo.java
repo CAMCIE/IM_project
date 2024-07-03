@@ -14,9 +14,19 @@ public class TenantInfo extends javax.swing.JFrame {
     /**
      * Creates new form TenantLog
      */
-    public TenantInfo() {
+    public TenantInfo(float waterBill, float electricBill, float roomRent, float maintenanceBill, float totalBilling, String paymentMethod) {
+        
         initComponents();
+
+        // Set the data in the JTextAreas
+        water.setText(String.valueOf(waterBill));
+        electric.setText(String.valueOf(electricBill));
+        rent.setText(String.valueOf(roomRent));
+        maintain.setText(String.valueOf(maintenanceBill));
+        total_bill.setText(String.valueOf(totalBilling));
+        payment_m.setText(paymentMethod);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,18 +46,18 @@ public class TenantInfo extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        total_bill = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        water = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        electric = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        rent = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        maintain = new javax.swing.JTextArea();
+        status = new javax.swing.JCheckBox();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea6 = new javax.swing.JTextArea();
+        payment_m = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -103,86 +113,86 @@ public class TenantInfo extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(71, 60, 51));
         jLabel7.setText("PAYMENT METHOD");
 
-        jTextArea1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setRows(1);
-        jTextArea1.setTabSize(5);
-        jTextArea1.setBorder(null);
-        jTextArea1.setName("TOTAL"); // NOI18N
-        jTextArea1.setSelectionColor(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(jTextArea1);
-        jTextArea1.getAccessibleContext().setAccessibleName("TOTAL");
+        total_bill.setBackground(new java.awt.Color(204, 204, 204));
+        total_bill.setColumns(20);
+        total_bill.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        total_bill.setForeground(new java.awt.Color(0, 0, 0));
+        total_bill.setRows(1);
+        total_bill.setTabSize(5);
+        total_bill.setBorder(null);
+        total_bill.setName("TOTAL"); // NOI18N
+        total_bill.setSelectionColor(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(total_bill);
+        total_bill.getAccessibleContext().setAccessibleName("TOTAL");
 
-        jTextArea2.setBackground(new java.awt.Color(204, 204, 204));
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea2.setRows(1);
-        jTextArea2.setTabSize(5);
-        jTextArea2.setBorder(null);
-        jTextArea2.setName("WATER"); // NOI18N
-        jTextArea2.setSelectionColor(new java.awt.Color(255, 255, 255));
-        jScrollPane2.setViewportView(jTextArea2);
-        jTextArea2.getAccessibleContext().setAccessibleName("WATER");
+        water.setBackground(new java.awt.Color(204, 204, 204));
+        water.setColumns(20);
+        water.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        water.setForeground(new java.awt.Color(0, 0, 0));
+        water.setRows(1);
+        water.setTabSize(5);
+        water.setBorder(null);
+        water.setName("WATER"); // NOI18N
+        water.setSelectionColor(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setViewportView(water);
+        water.getAccessibleContext().setAccessibleName("WATER");
 
-        jTextArea3.setBackground(new java.awt.Color(204, 204, 204));
-        jTextArea3.setColumns(20);
-        jTextArea3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
-        jTextArea3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea3.setRows(1);
-        jTextArea3.setTabSize(5);
-        jTextArea3.setBorder(null);
-        jTextArea3.setName("ELECTRIC"); // NOI18N
-        jTextArea3.setSelectionColor(new java.awt.Color(255, 255, 255));
-        jScrollPane3.setViewportView(jTextArea3);
-        jTextArea3.getAccessibleContext().setAccessibleName("ELECTRIC");
+        electric.setBackground(new java.awt.Color(204, 204, 204));
+        electric.setColumns(20);
+        electric.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        electric.setForeground(new java.awt.Color(0, 0, 0));
+        electric.setRows(1);
+        electric.setTabSize(5);
+        electric.setBorder(null);
+        electric.setName("ELECTRIC"); // NOI18N
+        electric.setSelectionColor(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setViewportView(electric);
+        electric.getAccessibleContext().setAccessibleName("ELECTRIC");
 
-        jTextArea4.setBackground(new java.awt.Color(204, 204, 204));
-        jTextArea4.setColumns(20);
-        jTextArea4.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
-        jTextArea4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea4.setRows(1);
-        jTextArea4.setTabSize(5);
-        jTextArea4.setBorder(null);
-        jTextArea4.setName("RENT"); // NOI18N
-        jTextArea4.setSelectionColor(new java.awt.Color(255, 255, 255));
-        jScrollPane4.setViewportView(jTextArea4);
-        jTextArea4.getAccessibleContext().setAccessibleName("RENT");
+        rent.setBackground(new java.awt.Color(204, 204, 204));
+        rent.setColumns(20);
+        rent.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        rent.setForeground(new java.awt.Color(0, 0, 0));
+        rent.setRows(1);
+        rent.setTabSize(5);
+        rent.setBorder(null);
+        rent.setName("RENT"); // NOI18N
+        rent.setSelectionColor(new java.awt.Color(255, 255, 255));
+        jScrollPane4.setViewportView(rent);
+        rent.getAccessibleContext().setAccessibleName("RENT");
 
-        jTextArea5.setBackground(new java.awt.Color(204, 204, 204));
-        jTextArea5.setColumns(20);
-        jTextArea5.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
-        jTextArea5.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea5.setRows(1);
-        jTextArea5.setTabSize(5);
-        jTextArea5.setBorder(null);
-        jTextArea5.setName("MAINTENANCE"); // NOI18N
-        jTextArea5.setSelectionColor(new java.awt.Color(255, 255, 255));
-        jScrollPane5.setViewportView(jTextArea5);
-        jTextArea5.getAccessibleContext().setAccessibleName("MAINTENANCE");
+        maintain.setBackground(new java.awt.Color(204, 204, 204));
+        maintain.setColumns(20);
+        maintain.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        maintain.setForeground(new java.awt.Color(0, 0, 0));
+        maintain.setRows(1);
+        maintain.setTabSize(5);
+        maintain.setBorder(null);
+        maintain.setName("MAINTENANCE"); // NOI18N
+        maintain.setSelectionColor(new java.awt.Color(255, 255, 255));
+        jScrollPane5.setViewportView(maintain);
+        maintain.getAccessibleContext().setAccessibleName("MAINTENANCE");
 
-        jCheckBox1.setBackground(new java.awt.Color(204, 204, 204));
-        jCheckBox1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox1.setText("PAYMENT STATUS");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        status.setBackground(new java.awt.Color(204, 204, 204));
+        status.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        status.setForeground(new java.awt.Color(0, 0, 0));
+        status.setText("PAYMENT STATUS");
+        status.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                statusActionPerformed(evt);
             }
         });
 
-        jTextArea6.setBackground(new java.awt.Color(204, 204, 204));
-        jTextArea6.setColumns(20);
-        jTextArea6.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
-        jTextArea6.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea6.setRows(1);
-        jTextArea6.setTabSize(5);
-        jTextArea6.setBorder(null);
-        jTextArea6.setName("PAYMENTM"); // NOI18N
-        jTextArea6.setSelectionColor(new java.awt.Color(255, 255, 255));
-        jScrollPane6.setViewportView(jTextArea6);
+        payment_m.setBackground(new java.awt.Color(204, 204, 204));
+        payment_m.setColumns(20);
+        payment_m.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        payment_m.setForeground(new java.awt.Color(0, 0, 0));
+        payment_m.setRows(1);
+        payment_m.setTabSize(5);
+        payment_m.setBorder(null);
+        payment_m.setName("PAYMENTM"); // NOI18N
+        payment_m.setSelectionColor(new java.awt.Color(255, 255, 255));
+        jScrollPane6.setViewportView(payment_m);
 
         jButton1.setBackground(new java.awt.Color(253, 167, 105));
         jButton1.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
@@ -224,7 +234,7 @@ public class TenantInfo extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCheckBox1)
+                        .addComponent(status)
                         .addComponent(jLabel7)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2))
@@ -260,7 +270,7 @@ public class TenantInfo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBox1)))
+                        .addComponent(status)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,9 +288,9 @@ public class TenantInfo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_statusActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -317,15 +327,15 @@ public class TenantInfo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TenantInfo().setVisible(true);
+                new TenantInfo(0, 0, 0, 0, 0, "").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea electric;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -341,11 +351,11 @@ public class TenantInfo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
-    private javax.swing.JTextArea jTextArea6;
+    private javax.swing.JTextArea maintain;
+    private javax.swing.JTextArea payment_m;
+    private javax.swing.JTextArea rent;
+    private javax.swing.JCheckBox status;
+    private javax.swing.JTextArea total_bill;
+    private javax.swing.JTextArea water;
     // End of variables declaration//GEN-END:variables
 }
