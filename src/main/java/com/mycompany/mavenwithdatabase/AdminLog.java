@@ -4,6 +4,8 @@
  */
 package com.mycompany.mavenwithdatabase;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Lenovo
@@ -30,10 +32,10 @@ public class AdminLog extends javax.swing.JFrame {
         AdminButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        Username = new javax.swing.JTextField();
+        Admin_Username = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        Password = new javax.swing.JTextField();
+        Admin_Password = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,10 +84,10 @@ public class AdminLog extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(171, 194, 112));
 
-        Username.setBackground(new java.awt.Color(255, 255, 255));
-        Username.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 12)); // NOI18N
-        Username.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 51, 0), new java.awt.Color(0, 51, 0)));
-        Username.setName("USERNAME"); // NOI18N
+        Admin_Username.setBackground(new java.awt.Color(255, 255, 255));
+        Admin_Username.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 12)); // NOI18N
+        Admin_Username.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 51, 0), new java.awt.Color(0, 51, 0)));
+        Admin_Username.setName("USERNAME"); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -95,10 +97,10 @@ public class AdminLog extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("PASSWORD:");
 
-        Password.setBackground(new java.awt.Color(255, 255, 255));
-        Password.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 12)); // NOI18N
-        Password.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 51, 0), new java.awt.Color(0, 51, 0)));
-        Password.setName("PASS"); // NOI18N
+        Admin_Password.setBackground(new java.awt.Color(255, 255, 255));
+        Admin_Password.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 12)); // NOI18N
+        Admin_Password.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 51, 0), new java.awt.Color(0, 51, 0)));
+        Admin_Password.setName("PASS"); // NOI18N
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 14)); // NOI18N
@@ -121,9 +123,9 @@ public class AdminLog extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
-                        .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Admin_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)
-                        .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Admin_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -132,18 +134,18 @@ public class AdminLog extends javax.swing.JFrame {
                 .addGap(109, 109, 109)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Admin_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Admin_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
         );
 
-        Username.getAccessibleContext().setAccessibleName("USERNAME");
-        Password.getAccessibleContext().setAccessibleName("PASS");
+        Admin_Username.getAccessibleContext().setAccessibleName("USERNAME");
+        Admin_Password.getAccessibleContext().setAccessibleName("PASS");
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -152,7 +154,19 @@ public class AdminLog extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
    
-        
+        String Admin = Admin_Username.getText();
+        String Password = Admin_Password.getText();
+        try{
+        if (Admin.equals("Admin") && Password.equals("12345")){
+        ADMINCITE GoToADMINCITE = new ADMINCITE();
+        GoToADMINCITE.setVisible(true);
+        this.dispose();
+        }else {
+        JOptionPane.showMessageDialog(this, "Invalid credentials. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+        }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Login Error", JOptionPane.ERROR_MESSAGE);
+        }
         
          // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -201,8 +215,8 @@ public class AdminLog extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdminButton;
-    private javax.swing.JTextField Password;
-    private javax.swing.JTextField Username;
+    private javax.swing.JTextField Admin_Password;
+    private javax.swing.JTextField Admin_Username;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

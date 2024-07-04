@@ -116,7 +116,7 @@ public class VisitHistory extends javax.swing.JFrame {
 
     private void BACKTenantinfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BACKTenantinfoActionPerformed
         // TODO add your handling code here:
-        TenantInfo GoToTenant = new TenantInfo(0, 0, 0, 0, 0, "");
+        TenantInfo GoToTenant = new TenantInfo(0, 0, 0, 0, 0, "","");
         GoToTenant.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BACKTenantinfoActionPerformed

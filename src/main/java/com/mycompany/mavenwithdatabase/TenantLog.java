@@ -411,7 +411,7 @@ public class TenantLog extends javax.swing.JFrame {
                 int tenantID = rs.getInt("TenantID");
 
                 // Query to retrieve billing information based on TenantID
-                String billingQuery = "SELECT * FROM billing_t WHERE TenantID=?";
+                String billingQuery = "SELECT * FROM billing_t WHERE TenantID=? ORDER BY Due_Date DESC LIMIT 1";
                 pst = conn.prepareStatement(billingQuery);
                 pst.setInt(1, tenantID);
                 rs = pst.executeQuery();
@@ -423,12 +423,14 @@ public class TenantLog extends javax.swing.JFrame {
                     float maintenanceBill = rs.getFloat("Maintenance_Bill");
                     float totalBilling = rs.getFloat("Total_Billing");
                     String paymentStatus = rs.getString("Payment_Stat");
+                    String dueDate = rs.getString("Due_Date");
                     clearFields();
                     this.dispose();
 
                     // Create and show the TenantInfo JFrame with retrieved data
-                    TenantInfo tenantInfoFrame = new TenantInfo(waterBill, electricBill, roomRent, maintenanceBill, totalBilling, paymentStatus);
+                    TenantInfo tenantInfoFrame = new TenantInfo(waterBill, electricBill, roomRent, maintenanceBill, totalBilling, paymentStatus, dueDate);
                     tenantInfoFrame.setVisible(true);
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "No billing information found for this tenant.");
                 }

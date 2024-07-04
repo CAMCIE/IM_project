@@ -121,9 +121,9 @@
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="Username" min="-2" pref="300" max="-2" attributes="0"/>
+                          <Component id="Admin_Username" min="-2" pref="300" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Password" min="-2" pref="300" max="-2" attributes="0"/>
+                          <Component id="Admin_Password" min="-2" pref="300" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="85" max="32767" attributes="0"/>
@@ -136,11 +136,11 @@
                   <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Username" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="Admin_Username" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Password" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="Admin_Password" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace pref="71" max="32767" attributes="0"/>
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
@@ -149,7 +149,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="Username">
+        <Component class="javax.swing.JTextField" name="Admin_Username">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -193,7 +193,7 @@
             <Property name="text" type="java.lang.String" value="PASSWORD:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Password">
+        <Component class="javax.swing.JTextField" name="Admin_Password">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

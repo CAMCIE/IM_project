@@ -2,9 +2,12 @@ package com.mycompany.mavenwithdatabase;
 
 import static com.mycompany.mavenwithdatabase.Mavenwithdatabase.conn;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /*
@@ -28,6 +31,16 @@ public class ADMINCITE extends javax.swing.JFrame {
         initComponents();
         conn = Mavenwithdatabase.conn();
     }
+    private void closeResources(Connection conn, PreparedStatement pst, ResultSet rs) {
+    try {
+        if (rs != null) rs.close();
+        if (pst != null) pst.close();
+        if (conn != null) conn.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Error closing resources: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +70,9 @@ public class ADMINCITE extends javax.swing.JFrame {
         maintenancebill = new javax.swing.JTextField();
         totalbill = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        duedate = new javax.swing.JTextField();
+        CLEAR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(171, 194, 112));
@@ -87,6 +103,7 @@ public class ADMINCITE extends javax.swing.JFrame {
         getContentPane().add(jPanel3, java.awt.BorderLayout.NORTH);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(661, 421));
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 60, 51));
@@ -119,7 +136,7 @@ public class ADMINCITE extends javax.swing.JFrame {
             }
         });
 
-        SaveBttn.setBackground(new java.awt.Color(254, 200, 104));
+        SaveBttn.setBackground(new java.awt.Color(171, 194, 112));
         SaveBttn.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
         SaveBttn.setForeground(new java.awt.Color(71, 60, 51));
         SaveBttn.setText("S A V E");
@@ -181,16 +198,34 @@ public class ADMINCITE extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(71, 60, 51));
         jLabel8.setText("TOTAL BILL:");
 
+        jLabel9.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(71, 60, 51));
+        jLabel9.setText("DUE DATE:");
+
+        duedate.setBackground(new java.awt.Color(255, 255, 255));
+        duedate.setForeground(new java.awt.Color(0, 0, 0));
+        duedate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
+        duedate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                duedateActionPerformed(evt);
+            }
+        });
+
+        CLEAR.setBackground(new java.awt.Color(254, 200, 104));
+        CLEAR.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
+        CLEAR.setForeground(new java.awt.Color(71, 60, 51));
+        CLEAR.setText("C L E A R");
+        CLEAR.setPreferredSize(new java.awt.Dimension(150, 40));
+        CLEAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CLEARActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AdminBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SaveBttn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -199,26 +234,39 @@ public class ADMINCITE extends javax.swing.JFrame {
                             .addComponent(paymentstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
                             .addComponent(totalbill, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(duedate, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1)
-                            .addComponent(waterbill, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(electricbill, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rentbill, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(maintenancebill))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(jLabel2))
+                                .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(T_NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel1)
+                                    .addComponent(waterbill, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(electricbill, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rentbill, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(maintenancebill))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(41, 41, 41)
+                                        .addComponent(jLabel2))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(42, 42, 42)
+                                        .addComponent(T_NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addGap(68, 68, 68))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(AdminBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(SaveBttn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,11 +283,16 @@ public class ADMINCITE extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(totalbill, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(duedate, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AdminBack, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(SaveBttn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(136, 136, 136))
+                    .addComponent(AdminBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SaveBttn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
@@ -272,81 +325,92 @@ public class ADMINCITE extends javax.swing.JFrame {
         float electricBill = Float.parseFloat(electricbill.getText());
         float roomRent = Float.parseFloat(rentbill.getText());
         float maintenanceBill = Float.parseFloat(maintenancebill.getText());
-        float totalBill = waterBill + electricBill +roomRent + maintenanceBill;
+        float totalBill = waterBill + electricBill + roomRent + maintenanceBill;
         String paymentStatus = paymentstatus.getText();
+        String dueDateStr = duedate.getText();
 
-    try {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        java.sql.Date sqlDueDate = null;
+        
+        try {
+            java.util.Date parsedDate = sdf.parse(dueDateStr);
+            sqlDueDate = new java.sql.Date(parsedDate.getTime());
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "Invalid date format. Please use YYYY-MM-DD.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+            return;
+}
+
+        try {
         // Query to check if tenant exists
-        String query = "SELECT * FROM admin WHERE Tenant_Name=?";
-        pst = conn.prepareStatement(query);
-        pst.setString(1, Name);
-        rs = pst.executeQuery();
+            String query = "SELECT * FROM admin WHERE Tenant_Name=?";
+            pst = conn.prepareStatement(query);
+            pst.setString(1, Name);
+            rs = pst.executeQuery();
 
-    if (rs.next()) {
-        int tenantID = rs.getInt("TenantID");
+            if (rs.next()) {
+            int tenantID = rs.getInt("TenantID");
 
-        // Query to check if billing record exists for the tenant
-        String billingQuery = "SELECT * FROM billing_t WHERE TenantID=?";
-        pst = conn.prepareStatement(billingQuery);
-        pst.setInt(1, tenantID);
-        rs = pst.executeQuery();
+            // Query to check if billing record exists for the tenant and due date
+            String billingQuery = "SELECT * FROM billing_t WHERE TenantID=? AND Due_Date=?";
+            pst = conn.prepareStatement(billingQuery);
+            pst.setInt(1, tenantID);
+            pst.setDate(2, sqlDueDate); // Set the SQL Date parameter
+            rs = pst.executeQuery();
 
-        if (rs.next()) {
-            // Update billing information
-            String updateQuery = "UPDATE billing_t SET Water_Bill=?, Electric_Bill=?, Room_Rent=?, Maintenance_Bill=?, Total_Billing=?, Payment_Stat=? WHERE TenantID=?";
-            pst = conn.prepareStatement(updateQuery);
-            pst.setFloat(1, waterBill);
-            pst.setFloat(2, electricBill);
-            pst.setFloat(3, roomRent);
-            pst.setFloat(4, maintenanceBill);
-            pst.setFloat(5, totalBill);
-            pst.setString(6, paymentStatus);
-            pst.setInt(7, tenantID);
+            if (rs.next()) {
+                // Update billing information
+                String updateQuery = "UPDATE billing_t SET Water_Bill=?, Electric_Bill=?, Room_Rent=?, Maintenance_Bill=?, Total_Billing=?, Payment_Stat=? WHERE TenantID=? AND Due_Date=?";
+                pst = conn.prepareStatement(updateQuery);
+                pst.setFloat(1, waterBill);
+                pst.setFloat(2, electricBill);
+                pst.setFloat(3, roomRent);
+                pst.setFloat(4, maintenanceBill);
+                pst.setFloat(5, totalBill);
+                pst.setString(6, paymentStatus);
+                pst.setInt(7, tenantID);
+                pst.setDate(8, sqlDueDate); // Set the SQL Date parameter
 
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "UPDATED SUCCESSFULLY.");
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "UPDATED SUCCESSFULLY.");
             
+            } else {
+                // Insert new billing record
+                String insertQuery = "INSERT INTO billing_t (TenantID, Water_Bill, Electric_Bill, Room_Rent, Maintenance_Bill, Total_Billing, Payment_Stat, Due_Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                pst = conn.prepareStatement(insertQuery);
+                pst.setInt(1, tenantID);
+                pst.setFloat(2, waterBill);
+                pst.setFloat(3, electricBill);
+                pst.setFloat(4, roomRent);
+                pst.setFloat(5, maintenanceBill);
+                pst.setFloat(6, totalBill);
+                pst.setString(7, paymentStatus);
+                pst.setDate(8, sqlDueDate); // Set the SQL Date parameter
+
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "INSERTED SUCCESSFULLY.");
+            }
         } else {
-            // Insert new billing record
-                    String insertQuery = "INSERT INTO billing_t (TenantID, Water_Bill, Electric_Bill, Room_Rent, Maintenance_Bill, Total_Billing, Payment_Stat) VALUES (?, ?, ?, ?, ?, ?, ?)";
-                    pst = conn.prepareStatement(insertQuery);
-                    pst.setInt(1, tenantID);
-                    pst.setFloat(2, waterBill);
-                    pst.setFloat(3, electricBill);
-                    pst.setFloat(4, roomRent);
-                    pst.setFloat(5, maintenanceBill);
-                    pst.setFloat(6, totalBill);
-                    pst.setString(7, paymentStatus);
-                    
-                    
-                    
-                    pst.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "INSERTED SUCCESSFULLY.");
+            JOptionPane.showMessageDialog(null, "THERE IS NO SUCH TENANT");
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "THERE IS NO SUCH TENANT");
-    }
     
     totalbill.setText(String.valueOf(totalBill));
     
     } catch (SQLException e) {
-    JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        JOptionPane.showMessageDialog(rootPane, e.getMessage());
     } catch (NumberFormatException e) {
-    JOptionPane.showMessageDialog(null, "Invalid input for bills. Please enter valid numbers.");
-    } finally {
-    // Close the resources
-    try {
-        if (rs != null) rs.close();
-        if (pst != null) pst.close();
-        if (conn != null) conn.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(this, "Error closing resources: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        ex.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Invalid input for bills. Please enter valid numbers.");
     }
-}
-
     }//GEN-LAST:event_SaveBttnActionPerformed
-
+    private void clearFields() {
+    waterbill.setText("");
+    electricbill.setText("");
+    rentbill.setText("");
+    maintenancebill.setText("");
+    paymentstatus.setText("");
+    duedate.setText("");
+    T_NAME.setText("");
+}
     private void rentbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentbillActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rentbillActionPerformed
@@ -360,11 +424,21 @@ public class ADMINCITE extends javax.swing.JFrame {
         Home GoToHome = new Home();
         GoToHome.setVisible(true);
         this.dispose();
+        closeResources(conn, pst, rs);
     }//GEN-LAST:event_AdminBackActionPerformed
 
     private void totalbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalbillActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_totalbillActionPerformed
+
+    private void duedateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duedateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_duedateActionPerformed
+
+    private void CLEARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CLEARActionPerformed
+        // TODO add your handling code here:
+        clearFields();
+    }//GEN-LAST:event_CLEARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,8 +480,10 @@ public class ADMINCITE extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdminBack;
+    private javax.swing.JButton CLEAR;
     private javax.swing.JButton SaveBttn;
     private javax.swing.JTextField T_NAME;
+    private javax.swing.JTextField duedate;
     private javax.swing.JTextField electricbill;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -417,6 +493,7 @@ public class ADMINCITE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField maintenancebill;
