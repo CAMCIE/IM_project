@@ -45,7 +45,7 @@ public class TenantLog extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         TenantLogin_bttn = new javax.swing.JButton();
         ContactNo = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        BackBTTN = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         sign_up_BTTN = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -113,15 +113,15 @@ public class TenantLog extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(253, 167, 105));
-        jButton3.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(71, 60, 51));
-        jButton3.setText("BACK");
-        jButton3.setBorder(null);
-        jButton3.setPreferredSize(new java.awt.Dimension(150, 50));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BackBTTN.setBackground(new java.awt.Color(253, 167, 105));
+        BackBTTN.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
+        BackBTTN.setForeground(new java.awt.Color(71, 60, 51));
+        BackBTTN.setText("BACK");
+        BackBTTN.setBorder(null);
+        BackBTTN.setPreferredSize(new java.awt.Dimension(150, 50));
+        BackBTTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BackBTTNActionPerformed(evt);
             }
         });
 
@@ -149,7 +149,7 @@ public class TenantLog extends javax.swing.JFrame {
                                 .addGap(44, 44, 44)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TenantLogin_bttn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(BackBTTN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 44, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -169,7 +169,7 @@ public class TenantLog extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addComponent(TenantLogin_bttn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BackBTTN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
@@ -422,12 +422,12 @@ public class TenantLog extends javax.swing.JFrame {
                     float roomRent = rs.getFloat("Room_Rent");
                     float maintenanceBill = rs.getFloat("Maintenance_Bill");
                     float totalBilling = rs.getFloat("Total_Billing");
-                    String paymentMethod = rs.getString("Payment_Method");
-
+                    String paymentStatus = rs.getString("Payment_Stat");
+                    clearFields();
                     this.dispose();
 
                     // Create and show the TenantInfo JFrame with retrieved data
-                    TenantInfo tenantInfoFrame = new TenantInfo(waterBill, electricBill, roomRent, maintenanceBill, totalBilling, paymentMethod);
+                    TenantInfo tenantInfoFrame = new TenantInfo(waterBill, electricBill, roomRent, maintenanceBill, totalBilling, paymentStatus);
                     tenantInfoFrame.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "No billing information found for this tenant.");
@@ -511,9 +511,12 @@ public class TenantLog extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_sign_roomActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BackBTTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBTTNActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        Home GoToHome = new Home();
+        GoToHome.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BackBTTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -551,10 +554,10 @@ public class TenantLog extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackBTTN;
     private javax.swing.JTextField ContactNo;
     private javax.swing.JButton TenantLogin_bttn;
     private javax.swing.JTextField TenantName;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -1,5 +1,12 @@
 package com.mycompany.mavenwithdatabase;
 
+import static com.mycompany.mavenwithdatabase.Mavenwithdatabase.conn;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,12 +17,16 @@ package com.mycompany.mavenwithdatabase;
  * @author Lenovo
  */
 public class ADMINCITE extends javax.swing.JFrame {
+    Connection conn;
+    PreparedStatement pst;
+    ResultSet rs;
 
     /**
      * Creates new form TenantLog
      */
     public ADMINCITE() {
         initComponents();
+        conn = Mavenwithdatabase.conn();
     }
 
     /**
@@ -35,16 +46,17 @@ public class ADMINCITE extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        AdminBack = new javax.swing.JButton();
+        SaveBttn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        waterbill = new javax.swing.JTextField();
+        electricbill = new javax.swing.JTextField();
+        rentbill = new javax.swing.JTextField();
+        paymentstatus = new javax.swing.JTextField();
+        T_NAME = new javax.swing.JTextField();
+        maintenancebill = new javax.swing.JTextField();
+        totalbill = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(171, 194, 112));
@@ -94,144 +106,158 @@ public class ADMINCITE extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(71, 60, 51));
-        jLabel7.setText("PAYMENT METHOD");
+        jLabel7.setText("PAYMENT STATUS:");
 
-        jCheckBox1.setBackground(new java.awt.Color(204, 204, 204));
-        jCheckBox1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox1.setText("PAYMENT STATUS");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        AdminBack.setBackground(new java.awt.Color(253, 167, 105));
+        AdminBack.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
+        AdminBack.setForeground(new java.awt.Color(71, 60, 51));
+        AdminBack.setText("BACK");
+        AdminBack.setPreferredSize(new java.awt.Dimension(150, 40));
+        AdminBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                AdminBackActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(253, 167, 105));
-        jButton1.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(71, 60, 51));
-        jButton1.setText("BACK");
-        jButton1.setPreferredSize(new java.awt.Dimension(150, 40));
-
-        jButton2.setBackground(new java.awt.Color(254, 200, 104));
-        jButton2.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(71, 60, 51));
-        jButton2.setText("S A V E");
-        jButton2.setPreferredSize(new java.awt.Dimension(150, 40));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        SaveBttn.setBackground(new java.awt.Color(254, 200, 104));
+        SaveBttn.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
+        SaveBttn.setForeground(new java.awt.Color(71, 60, 51));
+        SaveBttn.setText("S A V E");
+        SaveBttn.setPreferredSize(new java.awt.Dimension(150, 40));
+        SaveBttn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SaveBttnActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 60, 51));
-        jLabel2.setText("TENANT ID:");
+        jLabel2.setText("TENANR NAME:");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
+        waterbill.setBackground(new java.awt.Color(255, 255, 255));
+        waterbill.setForeground(new java.awt.Color(0, 0, 0));
+        waterbill.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
+        electricbill.setBackground(new java.awt.Color(255, 255, 255));
+        electricbill.setForeground(new java.awt.Color(0, 0, 0));
+        electricbill.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        rentbill.setBackground(new java.awt.Color(255, 255, 255));
+        rentbill.setForeground(new java.awt.Color(0, 0, 0));
+        rentbill.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
+        rentbill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                rentbillActionPerformed(evt);
             }
         });
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        paymentstatus.setBackground(new java.awt.Color(255, 255, 255));
+        paymentstatus.setForeground(new java.awt.Color(0, 0, 0));
+        paymentstatus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
+        paymentstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                paymentstatusActionPerformed(evt);
             }
         });
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
+        T_NAME.setBackground(new java.awt.Color(255, 255, 255));
+        T_NAME.setForeground(new java.awt.Color(0, 0, 0));
+        T_NAME.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
+        maintenancebill.setBackground(new java.awt.Color(255, 255, 255));
+        maintenancebill.setForeground(new java.awt.Color(0, 0, 0));
+        maintenancebill.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
+
+        totalbill.setBackground(new java.awt.Color(255, 255, 255));
+        totalbill.setForeground(new java.awt.Color(0, 0, 0));
+        totalbill.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
+        totalbill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalbillActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(71, 60, 51));
+        jLabel8.setText("TOTAL BILL:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AdminBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SaveBttn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(paymentstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(totalbill, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel1)
+                            .addComponent(waterbill, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(electricbill, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rentbill, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(maintenancebill))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(T_NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(68, 68, 68))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCheckBox1)))
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(T_NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(paymentstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(totalbill, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AdminBack, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(SaveBttn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(136, 136, 136))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(waterbill, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(electricbill, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rentbill, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6)))
-                .addGap(178, 178, 178))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(maintenancebill, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -239,21 +265,106 @@ public class ADMINCITE extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void SaveBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveBttnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+        String Name = T_NAME.getText();
+        float waterBill = Float.parseFloat(waterbill.getText());
+        float electricBill = Float.parseFloat(electricbill.getText());
+        float roomRent = Float.parseFloat(rentbill.getText());
+        float maintenanceBill = Float.parseFloat(maintenancebill.getText());
+        float totalBill = waterBill + electricBill +roomRent + maintenanceBill;
+        String paymentStatus = paymentstatus.getText();
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    try {
+        // Query to check if tenant exists
+        String query = "SELECT * FROM admin WHERE Tenant_Name=?";
+        pst = conn.prepareStatement(query);
+        pst.setString(1, Name);
+        rs = pst.executeQuery();
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    if (rs.next()) {
+        int tenantID = rs.getInt("TenantID");
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // Query to check if billing record exists for the tenant
+        String billingQuery = "SELECT * FROM billing_t WHERE TenantID=?";
+        pst = conn.prepareStatement(billingQuery);
+        pst.setInt(1, tenantID);
+        rs = pst.executeQuery();
+
+        if (rs.next()) {
+            // Update billing information
+            String updateQuery = "UPDATE billing_t SET Water_Bill=?, Electric_Bill=?, Room_Rent=?, Maintenance_Bill=?, Total_Billing=?, Payment_Stat=? WHERE TenantID=?";
+            pst = conn.prepareStatement(updateQuery);
+            pst.setFloat(1, waterBill);
+            pst.setFloat(2, electricBill);
+            pst.setFloat(3, roomRent);
+            pst.setFloat(4, maintenanceBill);
+            pst.setFloat(5, totalBill);
+            pst.setString(6, paymentStatus);
+            pst.setInt(7, tenantID);
+
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "UPDATED SUCCESSFULLY.");
+            
+        } else {
+            // Insert new billing record
+                    String insertQuery = "INSERT INTO billing_t (TenantID, Water_Bill, Electric_Bill, Room_Rent, Maintenance_Bill, Total_Billing, Payment_Stat) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    pst = conn.prepareStatement(insertQuery);
+                    pst.setInt(1, tenantID);
+                    pst.setFloat(2, waterBill);
+                    pst.setFloat(3, electricBill);
+                    pst.setFloat(4, roomRent);
+                    pst.setFloat(5, maintenanceBill);
+                    pst.setFloat(6, totalBill);
+                    pst.setString(7, paymentStatus);
+                    
+                    
+                    
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "INSERTED SUCCESSFULLY.");
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "THERE IS NO SUCH TENANT");
+    }
+    
+    totalbill.setText(String.valueOf(totalBill));
+    
+    } catch (SQLException e) {
+    JOptionPane.showMessageDialog(rootPane, e.getMessage());
+    } catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(null, "Invalid input for bills. Please enter valid numbers.");
+    } finally {
+    // Close the resources
+    try {
+        if (rs != null) rs.close();
+        if (pst != null) pst.close();
+        if (conn != null) conn.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Error closing resources: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
+}
+
+    }//GEN-LAST:event_SaveBttnActionPerformed
+
+    private void rentbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentbillActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_rentbillActionPerformed
+
+    private void paymentstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentstatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_paymentstatusActionPerformed
+
+    private void AdminBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminBackActionPerformed
+        // TODO add your handling code here:
+        Home GoToHome = new Home();
+        GoToHome.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_AdminBackActionPerformed
+
+    private void totalbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalbillActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totalbillActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,9 +405,10 @@ public class ADMINCITE extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JButton AdminBack;
+    private javax.swing.JButton SaveBttn;
+    private javax.swing.JTextField T_NAME;
+    private javax.swing.JTextField electricbill;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -304,13 +416,13 @@ public class ADMINCITE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField maintenancebill;
+    private javax.swing.JTextField paymentstatus;
+    private javax.swing.JTextField rentbill;
+    private javax.swing.JTextField totalbill;
+    private javax.swing.JTextField waterbill;
     // End of variables declaration//GEN-END:variables
 }

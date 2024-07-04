@@ -27,7 +27,7 @@ public class AdminLog extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        AdminButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Username = new javax.swing.JTextField();
@@ -42,11 +42,16 @@ public class AdminLog extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(250, 421));
 
-        jButton1.setBackground(new java.awt.Color(254, 200, 104));
-        jButton1.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(71, 60, 51));
-        jButton1.setText("A D M I N");
-        jButton1.setPreferredSize(new java.awt.Dimension(150, 50));
+        AdminButton.setBackground(new java.awt.Color(254, 200, 104));
+        AdminButton.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 14)); // NOI18N
+        AdminButton.setForeground(new java.awt.Color(71, 60, 51));
+        AdminButton.setText("A D M I N");
+        AdminButton.setPreferredSize(new java.awt.Dimension(150, 50));
+        AdminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdminButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -59,7 +64,7 @@ public class AdminLog extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -69,7 +74,7 @@ public class AdminLog extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addComponent(jLabel1)
                 .addGap(116, 116, 116)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(168, Short.MAX_VALUE))
         );
 
@@ -152,6 +157,13 @@ public class AdminLog extends javax.swing.JFrame {
          // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void AdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminButtonActionPerformed
+        // TODO add your handling code here:
+        Home GoToHome = new Home();
+        GoToHome.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_AdminButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -188,9 +200,9 @@ public class AdminLog extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AdminButton;
     private javax.swing.JTextField Password;
     private javax.swing.JTextField Username;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

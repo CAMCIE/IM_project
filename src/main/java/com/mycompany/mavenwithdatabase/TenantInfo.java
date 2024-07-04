@@ -14,7 +14,7 @@ public class TenantInfo extends javax.swing.JFrame {
     /**
      * Creates new form TenantLog
      */
-    public TenantInfo(float waterBill, float electricBill, float roomRent, float maintenanceBill, float totalBilling, String paymentMethod) {
+    public TenantInfo(float waterBill, float electricBill, float roomRent, float maintenanceBill, float totalBilling, String paymentStatus) {
         
         initComponents();
 
@@ -24,7 +24,7 @@ public class TenantInfo extends javax.swing.JFrame {
         rent.setText(String.valueOf(roomRent));
         maintain.setText(String.valueOf(maintenanceBill));
         total_bill.setText(String.valueOf(totalBilling));
-        payment_m.setText(paymentMethod);
+        payment_m.setText(paymentStatus);
     }
     
 
@@ -55,10 +55,9 @@ public class TenantInfo extends javax.swing.JFrame {
         rent = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
         maintain = new javax.swing.JTextArea();
-        status = new javax.swing.JCheckBox();
         jScrollPane6 = new javax.swing.JScrollPane();
         payment_m = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        BackHome = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -71,7 +70,7 @@ public class TenantInfo extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("TENANTS INF0");
+        jLabel6.setText("BILLING INF0");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -80,7 +79,7 @@ public class TenantInfo extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addContainerGap(447, Short.MAX_VALUE))
+                .addContainerGap(477, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +110,7 @@ public class TenantInfo extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(71, 60, 51));
-        jLabel7.setText("PAYMENT METHOD");
+        jLabel7.setText("PAYMENT STATUS");
 
         total_bill.setBackground(new java.awt.Color(204, 204, 204));
         total_bill.setColumns(20);
@@ -173,16 +172,6 @@ public class TenantInfo extends javax.swing.JFrame {
         jScrollPane5.setViewportView(maintain);
         maintain.getAccessibleContext().setAccessibleName("MAINTENANCE");
 
-        status.setBackground(new java.awt.Color(204, 204, 204));
-        status.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        status.setForeground(new java.awt.Color(0, 0, 0));
-        status.setText("PAYMENT STATUS");
-        status.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statusActionPerformed(evt);
-            }
-        });
-
         payment_m.setBackground(new java.awt.Color(204, 204, 204));
         payment_m.setColumns(20);
         payment_m.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
@@ -194,11 +183,16 @@ public class TenantInfo extends javax.swing.JFrame {
         payment_m.setSelectionColor(new java.awt.Color(255, 255, 255));
         jScrollPane6.setViewportView(payment_m);
 
-        jButton1.setBackground(new java.awt.Color(253, 167, 105));
-        jButton1.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(71, 60, 51));
-        jButton1.setText("BACK");
-        jButton1.setPreferredSize(new java.awt.Dimension(150, 40));
+        BackHome.setBackground(new java.awt.Color(253, 167, 105));
+        BackHome.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
+        BackHome.setForeground(new java.awt.Color(71, 60, 51));
+        BackHome.setText("BACK");
+        BackHome.setPreferredSize(new java.awt.Dimension(150, 40));
+        BackHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackHomeActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(254, 200, 104));
         jButton2.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
@@ -234,12 +228,11 @@ public class TenantInfo extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(status)
                         .addComponent(jLabel7)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BackHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(69, 69, 69))
@@ -269,15 +262,14 @@ public class TenantInfo extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(status)))
+                        .addGap(41, 41, 41)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BackHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(135, 135, 135))
@@ -288,13 +280,16 @@ public class TenantInfo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_statusActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void BackHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackHomeActionPerformed
+        // TODO add your handling code here:
+        Home GoToHome = new Home();
+        GoToHome.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BackHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,8 +328,8 @@ public class TenantInfo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackHome;
     private javax.swing.JTextArea electric;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -354,7 +349,6 @@ public class TenantInfo extends javax.swing.JFrame {
     private javax.swing.JTextArea maintain;
     private javax.swing.JTextArea payment_m;
     private javax.swing.JTextArea rent;
-    private javax.swing.JCheckBox status;
     private javax.swing.JTextArea total_bill;
     private javax.swing.JTextArea water;
     // End of variables declaration//GEN-END:variables
