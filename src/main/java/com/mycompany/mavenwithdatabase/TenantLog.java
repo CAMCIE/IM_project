@@ -27,6 +27,17 @@ public class TenantLog extends javax.swing.JFrame {
         initComponents();
         conn = Mavenwithdatabase.conn();
     }
+    
+    private void closeResources(Connection conn, PreparedStatement pst, ResultSet rs) {
+    try {
+        if (rs != null) rs.close();
+        if (pst != null) pst.close();
+        if (conn != null) conn.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Error closing resources: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace(); 
+    }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -378,17 +389,7 @@ public class TenantLog extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "SQL error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
-        } finally {
-        // Close resources in the finally block
-        try {
-            if (pst != null) {
-                pst.close();
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error closing PreparedStatement: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
-        }
-    }
+        } 
                 
     }//GEN-LAST:event_sign_up_BTTNActionPerformed
 
@@ -518,6 +519,7 @@ public class TenantLog extends javax.swing.JFrame {
         Home GoToHome = new Home();
         GoToHome.setVisible(true);
         this.dispose();
+        closeResources(conn, pst, rs);
     }//GEN-LAST:event_BackBTTNActionPerformed
 
     /**

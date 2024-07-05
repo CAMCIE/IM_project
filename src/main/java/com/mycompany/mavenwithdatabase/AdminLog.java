@@ -17,6 +17,7 @@ public class AdminLog extends javax.swing.JFrame {
      */
     public AdminLog() {
         initComponents();
+        
     }
 
     /**
