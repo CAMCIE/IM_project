@@ -463,6 +463,10 @@ public class ADMINCITE extends javax.swing.JFrame {
 
     private void AdminBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminBack1ActionPerformed
         // TODO add your handling code here:
+        BillingHistory GoToHistory = new BillingHistory();
+        GoToHistory.setVisible(true);
+        this.dispose();
+        closeResources(conn, pst, rs);
     }//GEN-LAST:event_AdminBack1ActionPerformed
 
     /**
