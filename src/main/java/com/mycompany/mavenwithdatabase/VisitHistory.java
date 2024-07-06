@@ -4,18 +4,40 @@
  */
 package com.mycompany.mavenwithdatabase;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Lenovo
  */
 public class VisitHistory extends javax.swing.JFrame {
+    Connection conn;
+    PreparedStatement pst;
+    ResultSet rs;
 
     /**
      * Creates new form VisitHistory
      */
     public VisitHistory() {
         initComponents();
+        conn = Mavenwithdatabase.conn();
+        fetchVisitorData();
     }
+    private void closeResources(Connection conn, PreparedStatement pst, ResultSet rs) {
+    try {
+        if (rs != null) rs.close();
+        if (pst != null) pst.close();
+        if (conn != null) conn.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Error closing resources: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace(); 
+}
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,27 +50,45 @@ public class VisitHistory extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        VISITTABLE = new javax.swing.JTable();
         BACKTenantinfo = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        BAR = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        SEARCH_BAR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        VISITTABLE.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "NAME", "ADDRESS", "DATE", "TIME IN", "TIME OUT"
+                "ID", "NAME", "ADDRESS", "DATE", "TIME IN", "TIME OUT", "CONTACT", "ROOM VISITED"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(VISITTABLE);
 
         BACKTenantinfo.setBackground(new java.awt.Color(171, 194, 112));
         BACKTenantinfo.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
@@ -78,9 +118,9 @@ public class VisitHistory extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addGap(20, 20, 20)
                 .addComponent(BACKTenantinfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -88,25 +128,48 @@ public class VisitHistory extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(171, 194, 112));
         jPanel2.setPreferredSize(new java.awt.Dimension(661, 50));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("VISITOR HISTORY");
+        BAR.setBackground(new java.awt.Color(255, 255, 255));
+        BAR.setColumns(15);
+        BAR.setFont(new java.awt.Font("Microsoft YaHei UI Light", 1, 12)); // NOI18N
+        BAR.setForeground(new java.awt.Color(51, 51, 51));
+        BAR.setRows(1);
+        BAR.setTabSize(1);
+        jScrollPane1.setViewportView(BAR);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesNew/search.png"))); // NOI18N
+
+        SEARCH_BAR.setBackground(new java.awt.Color(255, 255, 255));
+        SEARCH_BAR.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        SEARCH_BAR.setForeground(new java.awt.Color(171, 194, 112));
+        SEARCH_BAR.setText("SEARCH ROOM");
+        SEARCH_BAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SEARCH_BARActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(274, Short.MAX_VALUE)
+                .addComponent(SEARCH_BAR)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SEARCH_BAR)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
@@ -116,11 +179,75 @@ public class VisitHistory extends javax.swing.JFrame {
 
     private void BACKTenantinfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BACKTenantinfoActionPerformed
         // TODO add your handling code here:
-        TenantInfo GoToTenant = new TenantInfo(0, 0, 0, 0, 0, "","");
-        GoToTenant.setVisible(true);
+         Home GoToHome = new Home();
+        GoToHome.setVisible(true);
         this.dispose();
+        closeResources(conn, pst, rs);
     }//GEN-LAST:event_BACKTenantinfoActionPerformed
 
+    private void SEARCH_BARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SEARCH_BARActionPerformed
+        // TODO add your handling code here:
+        String searching = BAR.getText();
+
+        try {
+    String sql = "SELECT v.VisitorID, v.Visitor_Name, v.Date, v.Time_In, v.Time_Out, v.Visitor_Address, v.Visitor_ContactNo, a.RoomNo " +
+                 "FROM visitor v " +
+                 "JOIN admin a ON v.TenantID = a.TenantID " +
+                 "WHERE a.RoomNo LIKE ? " +
+                 "ORDER BY v.Date, v.Time_In";
+    pst = conn.prepareStatement(sql);
+    pst.setString(1, "%" + searching + "%"); 
+    rs = pst.executeQuery();
+
+    DefaultTableModel model = (DefaultTableModel) VISITTABLE.getModel();
+    model.setRowCount(0); 
+
+    while (rs.next()) {
+        int visitorID = rs.getInt("VisitorID");
+        String visitorName = rs.getString("Visitor_Name");
+        String date = rs.getString("Date");
+        String timeIn = rs.getString("Time_In");
+        String timeOut = rs.getString("Time_Out");
+        String visitorAddress = rs.getString("Visitor_Address");
+        String visitorContactNo = rs.getString("Visitor_ContactNo");
+        String roomNo = rs.getString("RoomNo");
+
+        model.addRow(new Object[]{visitorID, visitorName, visitorAddress, date, timeIn, timeOut, visitorContactNo, roomNo});
+    }
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, e);
+}
+    }//GEN-LAST:event_SEARCH_BARActionPerformed
+    private void fetchVisitorData() {
+        
+    try {
+        String sql = "SELECT v.VisitorID, v.Visitor_Name, v.Visitor_Address, v.Date, v.Time_In, v.Time_Out, v.Visitor_ContactNo, a.RoomNo " +
+                     "FROM visitor v " +
+                     "JOIN admin a ON v.TenantID = a.TenantID " +
+                     "ORDER BY v.Date";
+        pst = conn.prepareStatement(sql);
+        rs = pst.executeQuery();
+
+        DefaultTableModel model = (DefaultTableModel) VISITTABLE.getModel();
+        model.setRowCount(0);
+
+        while (rs.next()) {
+            int visitorID = rs.getInt("VisitorID");
+            String visitorName = rs.getString("Visitor_Name");
+            String date = rs.getString("Date");
+            String timeIn = rs.getString("Time_In");
+            String timeOut = rs.getString("Time_Out");
+            String visitorAddress = rs.getString("Visitor_Address");
+            String visitorContactNo = rs.getString("Visitor_ContactNo");
+            String roomNo = rs.getString("RoomNo");
+
+            model.addRow(new Object[]{visitorID, visitorName, visitorAddress, date, timeIn, timeOut, visitorContactNo, roomNo});
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error fetching data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+    
     /**
      * @param args the command line arguments
      */
@@ -147,6 +274,25 @@ public class VisitHistory extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VisitHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+         
+
+         try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VisitHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VisitHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VisitHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VisitHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -158,10 +304,13 @@ public class VisitHistory extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BACKTenantinfo;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextArea BAR;
+    private javax.swing.JButton SEARCH_BAR;
+    private javax.swing.JTable VISITTABLE;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

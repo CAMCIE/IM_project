@@ -102,7 +102,7 @@ public class VisitorLog extends javax.swing.JFrame {
 
         TOname.setBackground(new java.awt.Color(255, 255, 255));
         TOname.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        TOname.setForeground(new java.awt.Color(0, 0, 0));
+        TOname.setForeground(new java.awt.Color(51, 51, 51));
         TOname.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         TOname.setName("VISITORNAME"); // NOI18N
         TOname.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +117,7 @@ public class VisitorLog extends javax.swing.JFrame {
 
         TOroom.setBackground(new java.awt.Color(255, 255, 255));
         TOroom.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        TOroom.setForeground(new java.awt.Color(0, 0, 0));
+        TOroom.setForeground(new java.awt.Color(51, 51, 51));
         TOroom.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         TOroom.setName("ROOMVISITED"); // NOI18N
 
@@ -127,7 +127,7 @@ public class VisitorLog extends javax.swing.JFrame {
 
         TOtenant.setBackground(new java.awt.Color(255, 255, 255));
         TOtenant.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        TOtenant.setForeground(new java.awt.Color(0, 0, 0));
+        TOtenant.setForeground(new java.awt.Color(51, 51, 51));
         TOtenant.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         TOtenant.setName("TENANTVISITED"); // NOI18N
 
@@ -137,7 +137,7 @@ public class VisitorLog extends javax.swing.JFrame {
 
         TOtimeout.setBackground(new java.awt.Color(255, 255, 255));
         TOtimeout.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        TOtimeout.setForeground(new java.awt.Color(0, 0, 0));
+        TOtimeout.setForeground(new java.awt.Color(51, 51, 51));
         TOtimeout.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         TOtimeout.setName("TIMEOUT"); // NOI18N
 
@@ -155,7 +155,7 @@ public class VisitorLog extends javax.swing.JFrame {
 
         TOdate.setBackground(new java.awt.Color(255, 255, 255));
         TOdate.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        TOdate.setForeground(new java.awt.Color(0, 0, 0));
+        TOdate.setForeground(new java.awt.Color(51, 51, 51));
         TOdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         TOdate.setName("TIMEOUT"); // NOI18N
 
@@ -252,7 +252,7 @@ public class VisitorLog extends javax.swing.JFrame {
 
         TIaddress.setBackground(new java.awt.Color(255, 255, 255));
         TIaddress.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        TIaddress.setForeground(new java.awt.Color(0, 0, 0));
+        TIaddress.setForeground(new java.awt.Color(51, 51, 51));
         TIaddress.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         TIaddress.setName("VADDRESS"); // NOI18N
 
@@ -262,7 +262,7 @@ public class VisitorLog extends javax.swing.JFrame {
 
         TInumber.setBackground(new java.awt.Color(255, 255, 255));
         TInumber.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        TInumber.setForeground(new java.awt.Color(0, 0, 0));
+        TInumber.setForeground(new java.awt.Color(51, 51, 51));
         TInumber.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         TInumber.setName("VPHONE"); // NOI18N
 
@@ -272,7 +272,7 @@ public class VisitorLog extends javax.swing.JFrame {
 
         TIdate.setBackground(new java.awt.Color(255, 255, 255));
         TIdate.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        TIdate.setForeground(new java.awt.Color(0, 0, 0));
+        TIdate.setForeground(new java.awt.Color(51, 51, 51));
         TIdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         TIdate.setName("DATE"); // NOI18N
 
@@ -282,7 +282,7 @@ public class VisitorLog extends javax.swing.JFrame {
 
         TItimein.setBackground(new java.awt.Color(255, 255, 255));
         TItimein.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        TItimein.setForeground(new java.awt.Color(0, 0, 0));
+        TItimein.setForeground(new java.awt.Color(51, 51, 51));
         TItimein.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         TItimein.setName("TIMEIN"); // NOI18N
 
@@ -292,7 +292,7 @@ public class VisitorLog extends javax.swing.JFrame {
 
         TItenant.setBackground(new java.awt.Color(255, 255, 255));
         TItenant.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        TItenant.setForeground(new java.awt.Color(0, 0, 0));
+        TItenant.setForeground(new java.awt.Color(51, 51, 51));
         TItenant.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         TItenant.setName("TENANTTOVISIT"); // NOI18N
 
@@ -302,7 +302,7 @@ public class VisitorLog extends javax.swing.JFrame {
 
         TIroom.setBackground(new java.awt.Color(255, 255, 255));
         TIroom.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        TIroom.setForeground(new java.awt.Color(0, 0, 0));
+        TIroom.setForeground(new java.awt.Color(51, 51, 51));
         TIroom.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         TIroom.setName("ROOM"); // NOI18N
 
@@ -328,7 +328,7 @@ public class VisitorLog extends javax.swing.JFrame {
 
         TIname.setBackground(new java.awt.Color(255, 255, 255));
         TIname.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        TIname.setForeground(new java.awt.Color(0, 0, 0));
+        TIname.setForeground(new java.awt.Color(51, 51, 51));
         TIname.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         TIname.setName("VNAME"); // NOI18N
 

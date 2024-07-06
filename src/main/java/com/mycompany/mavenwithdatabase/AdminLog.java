@@ -87,6 +87,7 @@ public class AdminLog extends javax.swing.JFrame {
 
         Admin_Username.setBackground(new java.awt.Color(255, 255, 255));
         Admin_Username.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 12)); // NOI18N
+        Admin_Username.setForeground(new java.awt.Color(51, 51, 51));
         Admin_Username.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 51, 0), new java.awt.Color(0, 51, 0)));
         Admin_Username.setName("USERNAME"); // NOI18N
 
@@ -100,6 +101,7 @@ public class AdminLog extends javax.swing.JFrame {
 
         Admin_Password.setBackground(new java.awt.Color(255, 255, 255));
         Admin_Password.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 12)); // NOI18N
+        Admin_Password.setForeground(new java.awt.Color(51, 51, 51));
         Admin_Password.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 51, 0), new java.awt.Color(0, 51, 0)));
         Admin_Password.setName("PASS"); // NOI18N
 

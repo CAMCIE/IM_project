@@ -170,15 +170,18 @@ public class ADMINCITE extends javax.swing.JFrame {
         jLabel2.setText("TENANT NAME:");
 
         waterbill.setBackground(new java.awt.Color(255, 255, 255));
-        waterbill.setForeground(new java.awt.Color(0, 0, 0));
+        waterbill.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        waterbill.setForeground(new java.awt.Color(51, 51, 51));
         waterbill.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
 
         electricbill.setBackground(new java.awt.Color(255, 255, 255));
-        electricbill.setForeground(new java.awt.Color(0, 0, 0));
+        electricbill.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        electricbill.setForeground(new java.awt.Color(51, 51, 51));
         electricbill.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
 
         rentbill.setBackground(new java.awt.Color(255, 255, 255));
-        rentbill.setForeground(new java.awt.Color(0, 0, 0));
+        rentbill.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        rentbill.setForeground(new java.awt.Color(51, 51, 51));
         rentbill.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         rentbill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,7 +190,8 @@ public class ADMINCITE extends javax.swing.JFrame {
         });
 
         paymentstatus.setBackground(new java.awt.Color(255, 255, 255));
-        paymentstatus.setForeground(new java.awt.Color(0, 0, 0));
+        paymentstatus.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        paymentstatus.setForeground(new java.awt.Color(51, 51, 51));
         paymentstatus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         paymentstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,15 +200,18 @@ public class ADMINCITE extends javax.swing.JFrame {
         });
 
         T_NAME.setBackground(new java.awt.Color(255, 255, 255));
-        T_NAME.setForeground(new java.awt.Color(0, 0, 0));
+        T_NAME.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        T_NAME.setForeground(new java.awt.Color(51, 51, 51));
         T_NAME.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
 
         maintenancebill.setBackground(new java.awt.Color(255, 255, 255));
-        maintenancebill.setForeground(new java.awt.Color(0, 0, 0));
+        maintenancebill.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        maintenancebill.setForeground(new java.awt.Color(51, 51, 51));
         maintenancebill.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
 
         totalbill.setBackground(new java.awt.Color(255, 255, 255));
-        totalbill.setForeground(new java.awt.Color(0, 0, 0));
+        totalbill.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        totalbill.setForeground(new java.awt.Color(51, 51, 51));
         totalbill.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         totalbill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,10 +225,11 @@ public class ADMINCITE extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(71, 60, 51));
-        jLabel9.setText("DUE DATE:");
+        jLabel9.setText("DUE DATE: (YYYY:MM:DD)");
 
         duedate.setBackground(new java.awt.Color(255, 255, 255));
-        duedate.setForeground(new java.awt.Color(0, 0, 0));
+        duedate.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        duedate.setForeground(new java.awt.Color(51, 51, 51));
         duedate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105)));
         duedate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

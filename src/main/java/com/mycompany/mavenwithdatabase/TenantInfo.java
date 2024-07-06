@@ -59,7 +59,7 @@ public class TenantInfo extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         payment_m = new javax.swing.JTextArea();
         BackHome = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        VISITORS = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         due_date = new javax.swing.JTextArea();
@@ -204,14 +204,14 @@ public class TenantInfo extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(254, 200, 104));
-        jButton2.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(71, 60, 51));
-        jButton2.setText("VISITORS");
-        jButton2.setPreferredSize(new java.awt.Dimension(150, 40));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        VISITORS.setBackground(new java.awt.Color(254, 200, 104));
+        VISITORS.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
+        VISITORS.setForeground(new java.awt.Color(71, 60, 51));
+        VISITORS.setText("VISITORS");
+        VISITORS.setPreferredSize(new java.awt.Dimension(150, 40));
+        VISITORS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                VISITORSActionPerformed(evt);
             }
         });
 
@@ -261,7 +261,7 @@ public class TenantInfo extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(BackHome, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
+                        .addComponent(VISITORS, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -301,7 +301,7 @@ public class TenantInfo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BackHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(VISITORS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(213, 213, 213))))
         );
 
@@ -310,9 +310,12 @@ public class TenantInfo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void VISITORSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VISITORSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        VisitHistory GoToVisit = new VisitHistory();
+        GoToVisit.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_VISITORSActionPerformed
 
     private void BackHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackHomeActionPerformed
         // TODO add your handling code here:
@@ -359,9 +362,9 @@ public class TenantInfo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackHome;
+    private javax.swing.JButton VISITORS;
     private javax.swing.JTextArea due_date;
     private javax.swing.JTextArea electric;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

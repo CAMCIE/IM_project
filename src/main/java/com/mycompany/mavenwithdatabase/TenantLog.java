@@ -85,6 +85,7 @@ public class TenantLog extends javax.swing.JFrame {
         jLabel2.setText("TENANT ID:");
 
         TenantName.setBackground(new java.awt.Color(255, 255, 255));
+        TenantName.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
         TenantName.setForeground(new java.awt.Color(71, 60, 51));
         TenantName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
         TenantName.setName("TENANT ID"); // NOI18N
@@ -113,6 +114,7 @@ public class TenantLog extends javax.swing.JFrame {
         });
 
         ContactNo.setBackground(new java.awt.Color(255, 255, 255));
+        ContactNo.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
         ContactNo.setForeground(new java.awt.Color(71, 60, 51));
         ContactNo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
         ContactNo.setName("PASS"); // NOI18N
@@ -226,6 +228,7 @@ public class TenantLog extends javax.swing.JFrame {
         jLabel8.setText("ROOM NO.:");
 
         sign_name.setBackground(new java.awt.Color(255, 255, 255));
+        sign_name.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
         sign_name.setForeground(new java.awt.Color(71, 60, 51));
         sign_name.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
         sign_name.setName("NAME"); // NOI18N
@@ -238,6 +241,7 @@ public class TenantLog extends javax.swing.JFrame {
         });
 
         sign_address.setBackground(new java.awt.Color(255, 255, 255));
+        sign_address.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
         sign_address.setForeground(new java.awt.Color(71, 60, 51));
         sign_address.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
         sign_address.setName("ADDRESS"); // NOI18N
@@ -250,6 +254,7 @@ public class TenantLog extends javax.swing.JFrame {
         });
 
         sign_contact.setBackground(new java.awt.Color(255, 255, 255));
+        sign_contact.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
         sign_contact.setForeground(new java.awt.Color(71, 60, 51));
         sign_contact.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
         sign_contact.setName("CONTACT"); // NOI18N
@@ -262,6 +267,7 @@ public class TenantLog extends javax.swing.JFrame {
         });
 
         sign_contract.setBackground(new java.awt.Color(255, 255, 255));
+        sign_contract.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
         sign_contract.setForeground(new java.awt.Color(71, 60, 51));
         sign_contract.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
         sign_contract.setName("CONTRACT"); // NOI18N
@@ -274,6 +280,7 @@ public class TenantLog extends javax.swing.JFrame {
         });
 
         sign_room.setBackground(new java.awt.Color(255, 255, 255));
+        sign_room.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
         sign_room.setForeground(new java.awt.Color(71, 60, 51));
         sign_room.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(253, 167, 105), new java.awt.Color(253, 167, 105), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
         sign_room.setName("ROOM"); // NOI18N

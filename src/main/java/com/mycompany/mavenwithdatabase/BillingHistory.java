@@ -53,7 +53,6 @@ public class BillingHistory extends javax.swing.JFrame {
         BILLING_TABLE = new javax.swing.JTable();
         BACKTenantinfo = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         SEARCH_BAR = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
@@ -95,7 +94,6 @@ public class BillingHistory extends javax.swing.JFrame {
         BILLING_TABLE.setSelectionBackground(new java.awt.Color(51, 51, 51));
         BILLING_TABLE.setSelectionForeground(new java.awt.Color(51, 51, 51));
         BILLING_TABLE.setShowGrid(true);
-        BILLING_TABLE.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(BILLING_TABLE);
 
         BACKTenantinfo.setBackground(new java.awt.Color(171, 194, 112));
@@ -138,12 +136,10 @@ public class BillingHistory extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(171, 194, 112));
         jPanel2.setPreferredSize(new java.awt.Dimension(661, 50));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("BILLING HISTORY");
-
         SEARCH_BAR.setBackground(new java.awt.Color(255, 255, 255));
         SEARCH_BAR.setColumns(20);
+        SEARCH_BAR.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 12)); // NOI18N
+        SEARCH_BAR.setForeground(new java.awt.Color(51, 51, 51));
         SEARCH_BAR.setRows(1);
         SEARCH_BAR.setTabSize(2);
         jScrollPane1.setViewportView(SEARCH_BAR);
@@ -153,7 +149,7 @@ public class BillingHistory extends javax.swing.JFrame {
         SEARCH.setBackground(new java.awt.Color(255, 255, 255));
         SEARCH.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
         SEARCH.setForeground(new java.awt.Color(171, 194, 112));
-        SEARCH.setText(" S E A R C H");
+        SEARCH.setText("SEARCH NAME");
         SEARCH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SEARCHActionPerformed(evt);
@@ -165,9 +161,7 @@ public class BillingHistory extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addContainerGap(249, Short.MAX_VALUE)
                 .addComponent(SEARCH)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,13 +174,11 @@ public class BillingHistory extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(SEARCH))
+                    .addComponent(SEARCH)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
@@ -317,7 +309,6 @@ public class BillingHistory extends javax.swing.JFrame {
     private javax.swing.JTable BILLING_TABLE;
     private javax.swing.JButton SEARCH;
     private javax.swing.JTextArea SEARCH_BAR;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
