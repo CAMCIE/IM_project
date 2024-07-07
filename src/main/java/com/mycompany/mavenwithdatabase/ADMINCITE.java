@@ -54,6 +54,7 @@ public class ADMINCITE extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         AdminBack1 = new javax.swing.JButton();
+        VISITS = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -88,11 +89,22 @@ public class ADMINCITE extends javax.swing.JFrame {
         AdminBack1.setBackground(new java.awt.Color(255, 255, 255));
         AdminBack1.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
         AdminBack1.setForeground(new java.awt.Color(71, 60, 51));
-        AdminBack1.setText("BILLING HISTORY");
+        AdminBack1.setText("BILLINGS");
         AdminBack1.setPreferredSize(new java.awt.Dimension(150, 40));
         AdminBack1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdminBack1ActionPerformed(evt);
+            }
+        });
+
+        VISITS.setBackground(new java.awt.Color(255, 255, 255));
+        VISITS.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
+        VISITS.setForeground(new java.awt.Color(71, 60, 51));
+        VISITS.setText("VISITS");
+        VISITS.setPreferredSize(new java.awt.Dimension(150, 40));
+        VISITS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VISITSActionPerformed(evt);
             }
         });
 
@@ -103,9 +115,11 @@ public class ADMINCITE extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
-                .addComponent(AdminBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addComponent(AdminBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(VISITS, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +128,9 @@ public class ADMINCITE extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AdminBack1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AdminBack1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(VISITS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -267,9 +283,6 @@ public class ADMINCITE extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel5)
@@ -285,7 +298,10 @@ public class ADMINCITE extends javax.swing.JFrame {
                                         .addComponent(jLabel2))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(42, 42, 42)
-                                        .addComponent(T_NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(T_NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(501, 501, 501)))))
                 .addGap(68, 68, 68))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -337,7 +353,7 @@ public class ADMINCITE extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(maintenancebill, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -477,6 +493,13 @@ public class ADMINCITE extends javax.swing.JFrame {
         closeResources(conn, pst, rs);
     }//GEN-LAST:event_AdminBack1ActionPerformed
 
+    private void VISITSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VISITSActionPerformed
+        // TODO add your handling code here:
+        VisitHistory GoToVisit = new VisitHistory();
+        GoToVisit.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_VISITSActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -521,6 +544,7 @@ public class ADMINCITE extends javax.swing.JFrame {
     private javax.swing.JButton CLEAR;
     private javax.swing.JButton SaveBttn;
     private javax.swing.JTextField T_NAME;
+    private javax.swing.JButton VISITS;
     private javax.swing.JTextField duedate;
     private javax.swing.JTextField electricbill;
     private javax.swing.JLabel jLabel1;

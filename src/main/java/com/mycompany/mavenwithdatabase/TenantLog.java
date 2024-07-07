@@ -389,7 +389,7 @@ public class TenantLog extends javax.swing.JFrame {
         
         pst.executeUpdate();
         
-        JOptionPane.showMessageDialog(this, "Record inserted successfully! Try logging in!\nUSERNAME: " + S_name + " CONTACT: " + S_contact);
+        JOptionPane.showMessageDialog(this, "Record inserted successfully! Try logging in!\nUSERNAME: " + S_name + " PASSWORD: " + S_contact);
         
         clearFields(); // Clear the input fields after successful insertion
         
